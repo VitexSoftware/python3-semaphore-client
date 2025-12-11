@@ -2,14 +2,36 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **cron_format** | **str** |  | [optional] 
 **project_id** | **int** |  | [optional] 
 **template_id** | **int** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**name** | **str** |  | [optional] 
+**active** | **bool** |  | [optional] 
+**run_at** | **datetime** |  | [optional] 
+**type** | **str** |  | [optional] 
+**task_params** | [**TaskPrams**](TaskPrams.md) |  | [optional] 
 
+## Example
+
+```python
+from semaphore_client.models.schedule import Schedule
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Schedule from a JSON string
+schedule_instance = Schedule.from_json(json)
+# print the JSON string representation of the object
+print(Schedule.to_json())
+
+# convert the object into a dict
+schedule_dict = schedule_instance.to_dict()
+# create an instance of Schedule from a dict
+schedule_from_dict = Schedule.from_dict(schedule_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

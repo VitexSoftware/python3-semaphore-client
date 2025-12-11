@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
@@ -10,13 +11,38 @@ Name | Type | Description | Notes
 **repository_id** | **int** |  | [optional] 
 **environment_id** | **int** |  | [optional] 
 **view_id** | **int** |  | [optional] 
-**alias** | **str** |  | [optional] 
+**name** | **str** |  | [optional] 
 **playbook** | **str** |  | [optional] 
 **arguments** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**override_args** | **bool** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**allow_override_args_in_task** | **bool** |  | [optional] 
+**suppress_success_alerts** | **bool** |  | [optional] 
+**app** | **str** |  | [optional] 
+**git_branch** | **str** |  | [optional] 
+**type** | **str** |  | [optional] 
+**start_version** | **str** |  | [optional] 
+**build_template_id** | **int** |  | [optional] 
+**autorun** | **bool** |  | [optional] 
+**survey_vars** | [**List[TemplateSurveyVar]**](TemplateSurveyVar.md) |  | [optional] 
+**vaults** | [**List[TemplateVault]**](TemplateVault.md) |  | [optional] 
 
+## Example
+
+```python
+from semaphore_client.models.template import Template
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Template from a JSON string
+template_instance = Template.from_json(json)
+# print the JSON string representation of the object
+print(Template.to_json())
+
+# convert the object into a dict
+template_dict = template_instance.to_dict()
+# create an instance of Template from a dict
+template_from_dict = Template.from_dict(template_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

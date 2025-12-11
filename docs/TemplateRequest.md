@@ -2,20 +2,48 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** |  | [optional] 
 **project_id** | **int** |  | [optional] 
 **inventory_id** | **int** |  | [optional] 
 **repository_id** | **int** |  | [optional] 
 **environment_id** | **int** |  | [optional] 
 **view_id** | **int** |  | [optional] 
-**alias** | **str** |  | [optional] 
+**vaults** | [**List[TemplateVault]**](TemplateVault.md) |  | [optional] 
+**name** | **str** |  | [optional] 
 **playbook** | **str** |  | [optional] 
 **arguments** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**override_args** | **bool** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**allow_override_args_in_task** | **bool** |  | [optional] 
+**limit** | **str** |  | [optional] 
+**suppress_success_alerts** | **bool** |  | [optional] 
+**app** | **str** |  | [optional] 
+**git_branch** | **str** |  | [optional] 
+**survey_vars** | [**List[TemplateSurveyVar]**](TemplateSurveyVar.md) |  | [optional] 
+**type** | **str** |  | [optional] 
+**start_version** | **str** |  | [optional] 
+**build_template_id** | **int** |  | [optional] 
+**autorun** | **bool** |  | [optional] 
 
+## Example
+
+```python
+from semaphore_client.models.template_request import TemplateRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of TemplateRequest from a JSON string
+template_request_instance = TemplateRequest.from_json(json)
+# print the JSON string representation of the object
+print(TemplateRequest.to_json())
+
+# convert the object into a dict
+template_request_dict = template_request_instance.to_dict()
+# create an instance of TemplateRequest from a dict
+template_request_from_dict = TemplateRequest.from_dict(template_request_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

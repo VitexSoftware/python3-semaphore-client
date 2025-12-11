@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
@@ -10,9 +11,26 @@ Name | Type | Description | Notes
 **inventory** | **str** |  | [optional] 
 **ssh_key_id** | **int** |  | [optional] 
 **become_key_id** | **int** |  | [optional] 
+**repository_id** | **int** |  | [optional] 
 **type** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from semaphore_client.models.inventory import Inventory
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Inventory from a JSON string
+inventory_instance = Inventory.from_json(json)
+# print the JSON string representation of the object
+print(Inventory.to_json())
+
+# convert the object into a dict
+inventory_dict = inventory_instance.to_dict()
+# create an instance of Inventory from a dict
+inventory_from_dict = Inventory.from_dict(inventory_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

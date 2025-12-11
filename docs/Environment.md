@@ -2,15 +2,34 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **project_id** | **int** |  | [optional] 
 **password** | **str** |  | [optional] 
-**json** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**var_json** | **str** |  | [optional] 
+**env** | **str** |  | [optional] 
+**secrets** | [**List[EnvironmentSecret]**](EnvironmentSecret.md) |  | [optional] 
 
+## Example
+
+```python
+from semaphore_client.models.environment import Environment
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Environment from a JSON string
+environment_instance = Environment.from_json(json)
+# print the JSON string representation of the object
+print(Environment.to_json())
+
+# convert the object into a dict
+environment_dict = environment_instance.to_dict()
+# create an instance of Environment from a dict
+environment_from_dict = Environment.from_dict(environment_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

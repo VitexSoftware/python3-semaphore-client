@@ -1,18 +1,15 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#fcbdd4",
-        "titleBar.activeBackground": "#fcbdd4",
-        "titleBar.activeForeground": "#FFFFFF",
-        "titleBar.inactiveBackground": "#fcbdd4",
-        "titleBar.inactiveForeground": "#FFFFFF",
-        "titleBar.border": "#fcbdd4",
-        "activityBar.foreground": "#FFFFFF",
-        "statusBar.background": "#fcbdd4",
-        "statusBar.foreground": "#FFFFFF",
-        "statusBar.debuggingBackground": "#fcbdd4",
-        "statusBar.debuggingForeground": "#FFFFFF",
-        "tab.activeBorder": "#fcbdd4",
         "iLoveWorkSpaceColors": true,
         "iLoveWorkSpaceRandom": false
-    }
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./test",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }

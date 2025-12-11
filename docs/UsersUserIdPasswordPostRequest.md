@@ -2,11 +2,28 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **password** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from semaphore_client.models.users_user_id_password_post_request import UsersUserIdPasswordPostRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of UsersUserIdPasswordPostRequest from a JSON string
+users_user_id_password_post_request_instance = UsersUserIdPasswordPostRequest.from_json(json)
+# print the JSON string representation of the object
+print(UsersUserIdPasswordPostRequest.to_json())
+
+# convert the object into a dict
+users_user_id_password_post_request_dict = users_user_id_password_post_request_instance.to_dict()
+# create an instance of UsersUserIdPasswordPostRequest from a dict
+users_user_id_password_post_request_from_dict = UsersUserIdPasswordPostRequest.from_dict(users_user_id_password_post_request_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

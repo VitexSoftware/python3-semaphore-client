@@ -1,9 +1,11 @@
 # semaphore_client.DefaultApi
 
-All URIs are relative to *https://demo.ansible-semaphore.com/api*
+All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apps_get**](DefaultApi.md#apps_get) | **GET** /apps | Get apps
+[**debug_gc_post**](DefaultApi.md#debug_gc_post) | **POST** /debug/gc | Garbage collector
 [**events_get**](DefaultApi.md#events_get) | **GET** /events | Get Events related to Semaphore and projects you are part of
 [**events_last_get**](DefaultApi.md#events_last_get) | **GET** /events/last | Get last 200 Events related to Semaphore and projects you are part of
 [**info_get**](DefaultApi.md#info_get) | **GET** /info | Fetches information about semaphore
@@ -11,26 +13,25 @@ Method | HTTP request | Description
 [**ws_get**](DefaultApi.md#ws_get) | **GET** /ws | Websocket handler
 
 
-# **events_get**
-> [Event] events_get()
+# **apps_get**
+> List[object] apps_get()
 
-Get Events related to Semaphore and projects you are part of
+Get apps
 
 ### Example
 
-* Api Key Authentication (bearer):
 * Api Key Authentication (cookie):
+* Api Key Authentication (bearer):
 
 ```python
-import time
 import semaphore_client
-from semaphore import default_api
-from semaphore_client.model.event import Event
+from semaphore_client.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://demo.ansible-semaphore.com/api
+
+# Defining the host is optional and defaults to /api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = semaphore_client.Configuration(
-    host = "https://demo.ansible-semaphore.com/api"
+    host = "/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -38,49 +39,209 @@ configuration = semaphore_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: bearer
-configuration.api_key['bearer'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['bearer'] = 'Bearer'
-
 # Configure API key authorization: cookie
-configuration.api_key['cookie'] = 'YOUR_API_KEY'
+configuration.api_key['cookie'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['cookie'] = 'Bearer'
 
+# Configure API key authorization: bearer
+configuration.api_key['bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['bearer'] = 'Bearer'
+
 # Enter a context with an instance of the API client
 with semaphore_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = semaphore_client.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
-        # Get Events related to Semaphore and projects you are part of
-        api_response = api_instance.events_get()
+        # Get apps
+        api_response = api_instance.apps_get()
+        print("The response of DefaultApi->apps_get:\n")
         pprint(api_response)
-    except semaphore_client.ApiException as e:
-        print("Exception when calling DefaultApi->events_get: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->apps_get: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Event]**](Event.md)
+**List[object]**
 
 ### Authorization
 
-[bearer](../README.md#bearer), [cookie](../README.md#cookie)
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/plain; charset=utf-8
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Apps |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **debug_gc_post**
+> debug_gc_post()
+
+Garbage collector
+
+Run the garbage collector
+
+### Example
+
+* Api Key Authentication (cookie):
+* Api Key Authentication (bearer):
+
+```python
+import semaphore_client
+from semaphore_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = semaphore_client.Configuration(
+    host = "/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: cookie
+configuration.api_key['cookie'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookie'] = 'Bearer'
+
+# Configure API key authorization: bearer
+configuration.api_key['bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with semaphore_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = semaphore_client.DefaultApi(api_client)
+
+    try:
+        # Garbage collector
+        api_instance.debug_gc_post()
+    except Exception as e:
+        print("Exception when calling DefaultApi->debug_gc_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Successful \&quot;OK\&quot; reply |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **events_get**
+> List[Event] events_get()
+
+Get Events related to Semaphore and projects you are part of
+
+### Example
+
+* Api Key Authentication (cookie):
+* Api Key Authentication (bearer):
+
+```python
+import semaphore_client
+from semaphore_client.models.event import Event
+from semaphore_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = semaphore_client.Configuration(
+    host = "/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: cookie
+configuration.api_key['cookie'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookie'] = 'Bearer'
+
+# Configure API key authorization: bearer
+configuration.api_key['bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['bearer'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with semaphore_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = semaphore_client.DefaultApi(api_client)
+
+    try:
+        # Get Events related to Semaphore and projects you are part of
+        api_response = api_instance.events_get()
+        print("The response of DefaultApi->events_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->events_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[Event]**](Event.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/plain; charset=utf-8
 
 ### HTTP response details
 
@@ -91,25 +252,25 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **events_last_get**
-> [Event] events_last_get()
+> List[Event] events_last_get()
 
 Get last 200 Events related to Semaphore and projects you are part of
 
 ### Example
 
-* Api Key Authentication (bearer):
 * Api Key Authentication (cookie):
+* Api Key Authentication (bearer):
 
 ```python
-import time
 import semaphore_client
-from semaphore import default_api
-from semaphore_client.model.event import Event
+from semaphore_client.models.event import Event
+from semaphore_client.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://demo.ansible-semaphore.com/api
+
+# Defining the host is optional and defaults to /api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = semaphore_client.Configuration(
-    host = "https://demo.ansible-semaphore.com/api"
+    host = "/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -117,49 +278,50 @@ configuration = semaphore_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: bearer
-configuration.api_key['bearer'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['bearer'] = 'Bearer'
-
 # Configure API key authorization: cookie
-configuration.api_key['cookie'] = 'YOUR_API_KEY'
+configuration.api_key['cookie'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['cookie'] = 'Bearer'
 
+# Configure API key authorization: bearer
+configuration.api_key['bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['bearer'] = 'Bearer'
+
 # Enter a context with an instance of the API client
 with semaphore_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = semaphore_client.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Get last 200 Events related to Semaphore and projects you are part of
         api_response = api_instance.events_last_get()
+        print("The response of DefaultApi->events_last_get:\n")
         pprint(api_response)
-    except semaphore_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->events_last_get: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Event]**](Event.md)
+[**List[Event]**](Event.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer), [cookie](../README.md#cookie)
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/plain; charset=utf-8
-
 
 ### HTTP response details
 
@@ -178,19 +340,19 @@ you must be authenticated to use this
 
 ### Example
 
-* Api Key Authentication (bearer):
 * Api Key Authentication (cookie):
+* Api Key Authentication (bearer):
 
 ```python
-import time
 import semaphore_client
-from semaphore import default_api
-from semaphore_client.model.info_type import InfoType
+from semaphore_client.models.info_type import InfoType
+from semaphore_client.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://demo.ansible-semaphore.com/api
+
+# Defining the host is optional and defaults to /api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = semaphore_client.Configuration(
-    host = "https://demo.ansible-semaphore.com/api"
+    host = "/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -198,34 +360,36 @@ configuration = semaphore_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: bearer
-configuration.api_key['bearer'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['bearer'] = 'Bearer'
-
 # Configure API key authorization: cookie
-configuration.api_key['cookie'] = 'YOUR_API_KEY'
+configuration.api_key['cookie'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['cookie'] = 'Bearer'
 
+# Configure API key authorization: bearer
+configuration.api_key['bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['bearer'] = 'Bearer'
+
 # Enter a context with an instance of the API client
 with semaphore_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = semaphore_client.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Fetches information about semaphore
         api_response = api_instance.info_get()
+        print("The response of DefaultApi->info_get:\n")
         pprint(api_response)
-    except semaphore_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->info_get: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -234,13 +398,12 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bearer](../README.md#bearer), [cookie](../README.md#cookie)
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/plain; charset=utf-8
-
 
 ### HTTP response details
 
@@ -257,53 +420,37 @@ PING test
 
 ### Example
 
-* Api Key Authentication (bearer):
-* Api Key Authentication (cookie):
 
 ```python
-import time
 import semaphore_client
-from semaphore import default_api
+from semaphore_client.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://demo.ansible-semaphore.com/api
+
+# Defining the host is optional and defaults to /api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = semaphore_client.Configuration(
-    host = "https://demo.ansible-semaphore.com/api"
+    host = "/api"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: bearer
-configuration.api_key['bearer'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['bearer'] = 'Bearer'
-
-# Configure API key authorization: cookie
-configuration.api_key['cookie'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['cookie'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with semaphore_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = semaphore_client.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # PING test
         api_response = api_instance.ping_get()
+        print("The response of DefaultApi->ping_get:\n")
         pprint(api_response)
-    except semaphore_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->ping_get: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -312,13 +459,12 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bearer](../README.md#bearer), [cookie](../README.md#cookie)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain
-
 
 ### HTTP response details
 
@@ -335,18 +481,18 @@ Websocket handler
 
 ### Example
 
-* Api Key Authentication (bearer):
 * Api Key Authentication (cookie):
+* Api Key Authentication (bearer):
 
 ```python
-import time
 import semaphore_client
-from semaphore import default_api
+from semaphore_client.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://demo.ansible-semaphore.com/api
+
+# Defining the host is optional and defaults to /api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = semaphore_client.Configuration(
-    host = "https://demo.ansible-semaphore.com/api"
+    host = "/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -354,33 +500,34 @@ configuration = semaphore_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: bearer
-configuration.api_key['bearer'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['bearer'] = 'Bearer'
-
 # Configure API key authorization: cookie
-configuration.api_key['cookie'] = 'YOUR_API_KEY'
+configuration.api_key['cookie'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['cookie'] = 'Bearer'
 
+# Configure API key authorization: bearer
+configuration.api_key['bearer'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['bearer'] = 'Bearer'
+
 # Enter a context with an instance of the API client
 with semaphore_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = semaphore_client.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Websocket handler
         api_instance.ws_get()
-    except semaphore_client.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->ws_get: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -389,13 +536,12 @@ void (empty response body)
 
 ### Authorization
 
-[bearer](../README.md#bearer), [cookie](../README.md#cookie)
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
 
 ### HTTP response details
 
