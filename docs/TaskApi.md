@@ -608,7 +608,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **project_project_id_tasks_task_id_stop_post**
-> project_project_id_tasks_task_id_stop_post(project_id, task_id)
+> project_project_id_tasks_task_id_stop_post(project_id, task_id, project_project_id_tasks_task_id_stop_post_request=project_project_id_tasks_task_id_stop_post_request)
 
 Stop a job
 
@@ -619,6 +619,7 @@ Stop a job
 
 ```python
 import semaphore_client
+from semaphore_client.models.project_project_id_tasks_task_id_stop_post_request import ProjectProjectIdTasksTaskIdStopPostRequest
 from semaphore_client.rest import ApiException
 from pprint import pprint
 
@@ -651,10 +652,11 @@ with semaphore_client.ApiClient(configuration) as api_client:
     api_instance = semaphore_client.TaskApi(api_client)
     project_id = 1 # int | Project ID
     task_id = 8 # int | task ID
+    project_project_id_tasks_task_id_stop_post_request = semaphore_client.ProjectProjectIdTasksTaskIdStopPostRequest() # ProjectProjectIdTasksTaskIdStopPostRequest |  (optional)
 
     try:
         # Stop a job
-        api_instance.project_project_id_tasks_task_id_stop_post(project_id, task_id)
+        api_instance.project_project_id_tasks_task_id_stop_post(project_id, task_id, project_project_id_tasks_task_id_stop_post_request=project_project_id_tasks_task_id_stop_post_request)
     except Exception as e:
         print("Exception when calling TaskApi->project_project_id_tasks_task_id_stop_post: %s\n" % e)
 ```
@@ -668,6 +670,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **task_id** | **int**| task ID | 
+ **project_project_id_tasks_task_id_stop_post_request** | [**ProjectProjectIdTasksTaskIdStopPostRequest**](ProjectProjectIdTasksTaskIdStopPostRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -679,7 +682,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 ### HTTP response details

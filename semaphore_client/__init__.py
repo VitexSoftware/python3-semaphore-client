@@ -53,6 +53,7 @@ __all__ = [
     "Event",
     "InfoType",
     "Integration",
+    "IntegrationAlias",
     "IntegrationExtractValue",
     "IntegrationExtractValueRequest",
     "IntegrationMatcher",
@@ -77,6 +78,8 @@ __all__ = [
     "ProjectProjectIdPutRequest",
     "ProjectProjectIdRoleGet200Response",
     "ProjectProjectIdTasksPostRequest",
+    "ProjectProjectIdTasksTaskIdStopPostRequest",
+    "ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest",
     "ProjectProjectIdUsersPostRequest",
     "ProjectProjectIdUsersUserIdPutRequest",
     "ProjectRequest",
@@ -99,6 +102,7 @@ __all__ = [
     "User",
     "UserPutRequest",
     "UserRequest",
+    "UserTokensPostRequest",
     "UsersUserIdPasswordPostRequest",
     "View",
     "ViewRequest",
@@ -144,6 +148,7 @@ from semaphore_client.models.environment_secret_request import EnvironmentSecret
 from semaphore_client.models.event import Event as Event
 from semaphore_client.models.info_type import InfoType as InfoType
 from semaphore_client.models.integration import Integration as Integration
+from semaphore_client.models.integration_alias import IntegrationAlias as IntegrationAlias
 from semaphore_client.models.integration_extract_value import IntegrationExtractValue as IntegrationExtractValue
 from semaphore_client.models.integration_extract_value_request import IntegrationExtractValueRequest as IntegrationExtractValueRequest
 from semaphore_client.models.integration_matcher import IntegrationMatcher as IntegrationMatcher
@@ -168,6 +173,8 @@ from semaphore_client.models.project_invite_request import ProjectInviteRequest 
 from semaphore_client.models.project_project_id_put_request import ProjectProjectIdPutRequest as ProjectProjectIdPutRequest
 from semaphore_client.models.project_project_id_role_get200_response import ProjectProjectIdRoleGet200Response as ProjectProjectIdRoleGet200Response
 from semaphore_client.models.project_project_id_tasks_post_request import ProjectProjectIdTasksPostRequest as ProjectProjectIdTasksPostRequest
+from semaphore_client.models.project_project_id_tasks_task_id_stop_post_request import ProjectProjectIdTasksTaskIdStopPostRequest as ProjectProjectIdTasksTaskIdStopPostRequest
+from semaphore_client.models.project_project_id_templates_template_id_stop_all_tasks_post_request import ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest as ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest
 from semaphore_client.models.project_project_id_users_post_request import ProjectProjectIdUsersPostRequest as ProjectProjectIdUsersPostRequest
 from semaphore_client.models.project_project_id_users_user_id_put_request import ProjectProjectIdUsersUserIdPutRequest as ProjectProjectIdUsersUserIdPutRequest
 from semaphore_client.models.project_request import ProjectRequest as ProjectRequest
@@ -190,6 +197,7 @@ from semaphore_client.models.terraform_task_params import TerraformTaskParams as
 from semaphore_client.models.user import User as User
 from semaphore_client.models.user_put_request import UserPutRequest as UserPutRequest
 from semaphore_client.models.user_request import UserRequest as UserRequest
+from semaphore_client.models.user_tokens_post_request import UserTokensPostRequest as UserTokensPostRequest
 from semaphore_client.models.users_user_id_password_post_request import UsersUserIdPasswordPostRequest as UsersUserIdPasswordPostRequest
 from semaphore_client.models.view import View as View
 from semaphore_client.models.view_request import ViewRequest as ViewRequest

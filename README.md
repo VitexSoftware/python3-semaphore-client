@@ -20,9 +20,9 @@ Python 3.9+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/VitexSoftware/libpython-semaphore-client.git
+pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/VitexSoftware/libpython-semaphore-client.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
 Then import the package:
 ```python
@@ -95,13 +95,18 @@ Class | Method | HTTP request | Description
 *AuthenticationApi* | [**user_tokens_get**](docs/AuthenticationApi.md#user_tokens_get) | **GET** /user/tokens | Fetch API tokens for user
 *AuthenticationApi* | [**user_tokens_post**](docs/AuthenticationApi.md#user_tokens_post) | **POST** /user/tokens | Create an API token
 *DefaultApi* | [**apps_get**](docs/DefaultApi.md#apps_get) | **GET** /apps | Get apps
-*DefaultApi* | [**debug_gc_post**](docs/DefaultApi.md#debug_gc_post) | **POST** /debug/gc | Garbage collector
 *DefaultApi* | [**events_get**](docs/DefaultApi.md#events_get) | **GET** /events | Get Events related to Semaphore and projects you are part of
 *DefaultApi* | [**events_last_get**](docs/DefaultApi.md#events_last_get) | **GET** /events/last | Get last 200 Events related to Semaphore and projects you are part of
 *DefaultApi* | [**info_get**](docs/DefaultApi.md#info_get) | **GET** /info | Fetches information about semaphore
 *DefaultApi* | [**ping_get**](docs/DefaultApi.md#ping_get) | **GET** /ping | PING test
 *DefaultApi* | [**ws_get**](docs/DefaultApi.md#ws_get) | **GET** /ws | Websocket handler
+*IntegrationApi* | [**project_project_id_integrations_aliases_alias_id_delete**](docs/IntegrationApi.md#project_project_id_integrations_aliases_alias_id_delete) | **DELETE** /project/{project_id}/integrations/aliases/{alias_id} | Remove integration alias
+*IntegrationApi* | [**project_project_id_integrations_aliases_get**](docs/IntegrationApi.md#project_project_id_integrations_aliases_get) | **GET** /project/{project_id}/integrations/aliases | Get all integration aliases for the project
+*IntegrationApi* | [**project_project_id_integrations_aliases_post**](docs/IntegrationApi.md#project_project_id_integrations_aliases_post) | **POST** /project/{project_id}/integrations/aliases | Create a new integration alias for the project
 *IntegrationApi* | [**project_project_id_integrations_get**](docs/IntegrationApi.md#project_project_id_integrations_get) | **GET** /project/{project_id}/integrations | get all integrations
+*IntegrationApi* | [**project_project_id_integrations_integration_id_aliases_alias_id_delete**](docs/IntegrationApi.md#project_project_id_integrations_integration_id_aliases_alias_id_delete) | **DELETE** /project/{project_id}/integrations/{integration_id}/aliases/{alias_id} | Remove integration alias
+*IntegrationApi* | [**project_project_id_integrations_integration_id_aliases_get**](docs/IntegrationApi.md#project_project_id_integrations_integration_id_aliases_get) | **GET** /project/{project_id}/integrations/{integration_id}/aliases | Get all aliases for an integration
+*IntegrationApi* | [**project_project_id_integrations_integration_id_aliases_post**](docs/IntegrationApi.md#project_project_id_integrations_integration_id_aliases_post) | **POST** /project/{project_id}/integrations/{integration_id}/aliases | Create a new alias for an integration
 *IntegrationApi* | [**project_project_id_integrations_integration_id_delete**](docs/IntegrationApi.md#project_project_id_integrations_integration_id_delete) | **DELETE** /project/{project_id}/integrations/{integration_id} | Remove integration
 *IntegrationApi* | [**project_project_id_integrations_integration_id_get**](docs/IntegrationApi.md#project_project_id_integrations_integration_id_get) | **GET** /project/{project_id}/integrations/{integration_id} | Get Integration
 *IntegrationApi* | [**project_project_id_integrations_integration_id_matchers_get**](docs/IntegrationApi.md#project_project_id_integrations_integration_id_matchers_get) | **GET** /project/{project_id}/integrations/{integration_id}/matchers | Get Integration Matcher linked to integration extractor
@@ -198,6 +203,7 @@ Class | Method | HTTP request | Description
  - [Event](docs/Event.md)
  - [InfoType](docs/InfoType.md)
  - [Integration](docs/Integration.md)
+ - [IntegrationAlias](docs/IntegrationAlias.md)
  - [IntegrationExtractValue](docs/IntegrationExtractValue.md)
  - [IntegrationExtractValueRequest](docs/IntegrationExtractValueRequest.md)
  - [IntegrationMatcher](docs/IntegrationMatcher.md)
@@ -222,6 +228,8 @@ Class | Method | HTTP request | Description
  - [ProjectProjectIdPutRequest](docs/ProjectProjectIdPutRequest.md)
  - [ProjectProjectIdRoleGet200Response](docs/ProjectProjectIdRoleGet200Response.md)
  - [ProjectProjectIdTasksPostRequest](docs/ProjectProjectIdTasksPostRequest.md)
+ - [ProjectProjectIdTasksTaskIdStopPostRequest](docs/ProjectProjectIdTasksTaskIdStopPostRequest.md)
+ - [ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest](docs/ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest.md)
  - [ProjectProjectIdUsersPostRequest](docs/ProjectProjectIdUsersPostRequest.md)
  - [ProjectProjectIdUsersUserIdPutRequest](docs/ProjectProjectIdUsersUserIdPutRequest.md)
  - [ProjectRequest](docs/ProjectRequest.md)
@@ -244,6 +252,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserPutRequest](docs/UserPutRequest.md)
  - [UserRequest](docs/UserRequest.md)
+ - [UserTokensPostRequest](docs/UserTokensPostRequest.md)
  - [UsersUserIdPasswordPostRequest](docs/UsersUserIdPasswordPostRequest.md)
  - [View](docs/View.md)
  - [ViewRequest](docs/ViewRequest.md)

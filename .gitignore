@@ -64,3 +64,13 @@ target/
 
 # Ipython Notebook
 .ipynb_checkpoints
+
+# Debian packaging
+.pybuild/
+debian/files
+debian/python3-semaphore-client.postinst.debhelper
+debian/python3-semaphore-client.prerm.debhelper
+debian/python3-semaphore-client.substvars
+debian/debhelper-build-stamp
+debian/.debhelper/
+debian/python3-semaphore-client/

@@ -443,7 +443,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **project_project_id_templates_template_id_stop_all_tasks_post**
-> project_project_id_templates_template_id_stop_all_tasks_post(project_id, template_id)
+> project_project_id_templates_template_id_stop_all_tasks_post(project_id, template_id, project_project_id_templates_template_id_stop_all_tasks_post_request=project_project_id_templates_template_id_stop_all_tasks_post_request)
 
 Stop all active tasks of template
 
@@ -454,6 +454,7 @@ Stop all active tasks of template
 
 ```python
 import semaphore_client
+from semaphore_client.models.project_project_id_templates_template_id_stop_all_tasks_post_request import ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest
 from semaphore_client.rest import ApiException
 from pprint import pprint
 
@@ -486,10 +487,11 @@ with semaphore_client.ApiClient(configuration) as api_client:
     api_instance = semaphore_client.TemplateApi(api_client)
     project_id = 1 # int | Project ID
     template_id = 7 # int | template ID
+    project_project_id_templates_template_id_stop_all_tasks_post_request = semaphore_client.ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest() # ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest |  (optional)
 
     try:
         # Stop all active tasks of template
-        api_instance.project_project_id_templates_template_id_stop_all_tasks_post(project_id, template_id)
+        api_instance.project_project_id_templates_template_id_stop_all_tasks_post(project_id, template_id, project_project_id_templates_template_id_stop_all_tasks_post_request=project_project_id_templates_template_id_stop_all_tasks_post_request)
     except Exception as e:
         print("Exception when calling TemplateApi->project_project_id_templates_template_id_stop_all_tasks_post: %s\n" % e)
 ```
@@ -503,6 +505,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **int**| Project ID | 
  **template_id** | **int**| template ID | 
+ **project_project_id_templates_template_id_stop_all_tasks_post_request** | [**ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest**](ProjectProjectIdTemplatesTemplateIdStopAllTasksPostRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -514,7 +517,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 ### HTTP response details

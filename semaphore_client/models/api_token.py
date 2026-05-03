@@ -31,7 +31,8 @@ class APIToken(BaseModel):
     created: Optional[StrictStr] = None
     expired: Optional[StrictBool] = None
     user_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = None
-    __properties: ClassVar[List[str]] = ["id", "created", "expired", "user_id"]
+    name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "created", "expired", "user_id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,7 +88,8 @@ class APIToken(BaseModel):
             "id": obj.get("id"),
             "created": obj.get("created"),
             "expired": obj.get("expired"),
-            "user_id": obj.get("user_id")
+            "user_id": obj.get("user_id"),
+            "name": obj.get("name")
         })
         return _obj
 

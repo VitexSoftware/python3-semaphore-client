@@ -550,7 +550,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_tokens_post**
-> APIToken user_tokens_post()
+> APIToken user_tokens_post(user_tokens_post_request=user_tokens_post_request)
 
 Create an API token
 
@@ -562,6 +562,7 @@ Create an API token
 ```python
 import semaphore_client
 from semaphore_client.models.api_token import APIToken
+from semaphore_client.models.user_tokens_post_request import UserTokensPostRequest
 from semaphore_client.rest import ApiException
 from pprint import pprint
 
@@ -592,10 +593,11 @@ configuration.api_key['bearer'] = os.environ["API_KEY"]
 with semaphore_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = semaphore_client.AuthenticationApi(api_client)
+    user_tokens_post_request = semaphore_client.UserTokensPostRequest() # UserTokensPostRequest |  (optional)
 
     try:
         # Create an API token
-        api_response = api_instance.user_tokens_post()
+        api_response = api_instance.user_tokens_post(user_tokens_post_request=user_tokens_post_request)
         print("The response of AuthenticationApi->user_tokens_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -606,7 +608,10 @@ with semaphore_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_tokens_post_request** | [**UserTokensPostRequest**](UserTokensPostRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -618,7 +623,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json, text/plain; charset=utf-8
 
 ### HTTP response details

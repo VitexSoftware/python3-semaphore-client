@@ -17,22 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from semaphore_client.models.task_params import TaskParams
 from typing import Optional, Set
 from typing_extensions import Self
 
-class TaskPrams(BaseModel):
+class ProjectProjectIdTasksTaskIdStopPostRequest(BaseModel):
     """
-    TaskPrams
+    ProjectProjectIdTasksTaskIdStopPostRequest
     """ # noqa: E501
-    environment: Optional[StrictStr] = None
-    git_branch: Optional[StrictStr] = None
-    message: Optional[StrictStr] = None
-    arguments: Optional[StrictStr] = None
-    params: Optional[TaskParams] = None
-    __properties: ClassVar[List[str]] = ["environment", "git_branch", "message", "arguments", "params"]
+    force: Optional[StrictBool] = Field(default=None, description="Force stop (kill) the task immediately")
+    __properties: ClassVar[List[str]] = ["force"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +47,7 @@ class TaskPrams(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of TaskPrams from a JSON string"""
+        """Create an instance of ProjectProjectIdTasksTaskIdStopPostRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,14 +68,11 @@ class TaskPrams(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of params
-        if self.params:
-            _dict['params'] = self.params.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of TaskPrams from a dict"""
+        """Create an instance of ProjectProjectIdTasksTaskIdStopPostRequest from a dict"""
         if obj is None:
             return None
 
@@ -88,11 +80,7 @@ class TaskPrams(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "environment": obj.get("environment"),
-            "git_branch": obj.get("git_branch"),
-            "message": obj.get("message"),
-            "arguments": obj.get("arguments"),
-            "params": TaskParams.from_dict(obj["params"]) if obj.get("params") is not None else None
+            "force": obj.get("force")
         })
         return _obj
 

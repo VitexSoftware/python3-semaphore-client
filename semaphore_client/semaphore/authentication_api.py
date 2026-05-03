@@ -17,10 +17,11 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictStr
-from typing import List
+from typing import List, Optional
 from semaphore_client.models.api_token import APIToken
 from semaphore_client.models.login import Login
 from semaphore_client.models.login_metadata import LoginMetadata
+from semaphore_client.models.user_tokens_post_request import UserTokensPostRequest
 
 from semaphore_client.api_client import ApiClient, RequestSerialized
 from semaphore_client.api_response import ApiResponse
@@ -1802,6 +1803,7 @@ class AuthenticationApi:
     @validate_call
     def user_tokens_post(
         self,
+        user_tokens_post_request: Optional[UserTokensPostRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1818,6 +1820,8 @@ class AuthenticationApi:
         """Create an API token
 
 
+        :param user_tokens_post_request:
+        :type user_tokens_post_request: UserTokensPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1841,6 +1845,7 @@ class AuthenticationApi:
         """ # noqa: E501
 
         _param = self._user_tokens_post_serialize(
+            user_tokens_post_request=user_tokens_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1864,6 +1869,7 @@ class AuthenticationApi:
     @validate_call
     def user_tokens_post_with_http_info(
         self,
+        user_tokens_post_request: Optional[UserTokensPostRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1880,6 +1886,8 @@ class AuthenticationApi:
         """Create an API token
 
 
+        :param user_tokens_post_request:
+        :type user_tokens_post_request: UserTokensPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1903,6 +1911,7 @@ class AuthenticationApi:
         """ # noqa: E501
 
         _param = self._user_tokens_post_serialize(
+            user_tokens_post_request=user_tokens_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1926,6 +1935,7 @@ class AuthenticationApi:
     @validate_call
     def user_tokens_post_without_preload_content(
         self,
+        user_tokens_post_request: Optional[UserTokensPostRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1942,6 +1952,8 @@ class AuthenticationApi:
         """Create an API token
 
 
+        :param user_tokens_post_request:
+        :type user_tokens_post_request: UserTokensPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1965,6 +1977,7 @@ class AuthenticationApi:
         """ # noqa: E501
 
         _param = self._user_tokens_post_serialize(
+            user_tokens_post_request=user_tokens_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1983,6 +1996,7 @@ class AuthenticationApi:
 
     def _user_tokens_post_serialize(
         self,
+        user_tokens_post_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2008,6 +2022,8 @@ class AuthenticationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if user_tokens_post_request is not None:
+            _body_params = user_tokens_post_request
 
 
         # set the HTTP header `Accept`
@@ -2019,6 +2035,19 @@ class AuthenticationApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

@@ -34,6 +34,7 @@ class Template(BaseModel):
     inventory_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = None
     repository_id: Optional[StrictInt] = None
     environment_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = None
+    environment_ids: Optional[List[StrictInt]] = None
     view_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = None
     name: Optional[StrictStr] = None
     playbook: Optional[StrictStr] = None
@@ -49,7 +50,7 @@ class Template(BaseModel):
     autorun: Optional[StrictBool] = None
     survey_vars: Optional[List[TemplateSurveyVar]] = None
     vaults: Optional[List[TemplateVault]] = None
-    __properties: ClassVar[List[str]] = ["id", "project_id", "inventory_id", "repository_id", "environment_id", "view_id", "name", "playbook", "arguments", "description", "allow_override_args_in_task", "suppress_success_alerts", "app", "git_branch", "type", "start_version", "build_template_id", "autorun", "survey_vars", "vaults"]
+    __properties: ClassVar[List[str]] = ["id", "project_id", "inventory_id", "repository_id", "environment_id", "environment_ids", "view_id", "name", "playbook", "arguments", "description", "allow_override_args_in_task", "suppress_success_alerts", "app", "git_branch", "type", "start_version", "build_template_id", "autorun", "survey_vars", "vaults"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -131,6 +132,7 @@ class Template(BaseModel):
             "inventory_id": obj.get("inventory_id"),
             "repository_id": obj.get("repository_id"),
             "environment_id": obj.get("environment_id"),
+            "environment_ids": obj.get("environment_ids"),
             "view_id": obj.get("view_id"),
             "name": obj.get("name"),
             "playbook": obj.get("playbook"),

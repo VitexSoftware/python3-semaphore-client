@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **created** | **str** |  | [optional] 
 **expired** | **bool** |  | [optional] 
 **user_id** | **int** |  | [optional] 
+**name** | **str** |  | [optional] 
 
 ## Example
 

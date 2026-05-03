@@ -1,0 +1,31 @@
+Source: python3-semaphore-client
+Section: python
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-setuptools,
+ pybuild-plugin-pyproject,
+Standards-Version: 4.7.0
+Homepage: https://github.com/VitexSoftware/libpython-semaphore-client
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/VitexSoftware/libpython-semaphore-client.git
+Vcs-Browser: https://github.com/VitexSoftware/libpython-semaphore-client
+
+Package: python3-semaphore-client
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ python3-urllib3 (>= 2.1.0),
+ python3-dateutil (>= 2.8.2),
+ python3-pydantic (>= 2),
+ python3-typing-extensions (>= 4.7.1),
+Description: Python client library for Semaphore CI/CD API
+ Auto-generated Python client for the Semaphore UI REST API.
+ Provides complete access to authentication, projects, templates,
+ inventories, repositories, tasks, schedules, integrations,
+ and user management endpoints.

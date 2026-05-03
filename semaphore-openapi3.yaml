@@ -20,13 +20,6 @@ security:
   - bearer: []
   - cookie: []
 paths:
-  /debug/gc:
-    post:
-      summary: Garbage collector
-      description: Run the garbage collector
-      responses:
-        "204":
-          description: Successful "OK" reply
   /ping:
     get:
       summary: PING test
@@ -186,6 +179,15 @@ paths:
         - authentication
         - user
       summary: Create an API token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: my CI token
       responses:
         "201":
           description: API Token
@@ -816,6 +818,100 @@ paths:
       responses:
         "204":
           description: integration matcher removed
+  "/project/{project_id}/integrations/aliases":
+    parameters:
+      - $ref: "#/components/parameters/project_id"
+    get:
+      tags:
+        - integration
+      summary: Get all integration aliases for the project
+      responses:
+        "200":
+          description: Integration Aliases
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationAlias"
+            text/plain; charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationAlias"
+    post:
+      tags:
+        - integration
+      summary: Create a new integration alias for the project
+      responses:
+        "200":
+          description: Integration Alias Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IntegrationAlias"
+            text/plain; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/IntegrationAlias"
+  "/project/{project_id}/integrations/aliases/{alias_id}":
+    parameters:
+      - $ref: "#/components/parameters/project_id"
+      - $ref: "#/components/parameters/alias_id"
+    delete:
+      tags:
+        - integration
+      summary: Remove integration alias
+      responses:
+        "204":
+          description: integration alias removed
+  "/project/{project_id}/integrations/{integration_id}/aliases":
+    parameters:
+      - $ref: "#/components/parameters/project_id"
+      - $ref: "#/components/parameters/integration_id"
+    get:
+      tags:
+        - integration
+      summary: Get all aliases for an integration
+      responses:
+        "200":
+          description: Integration Aliases
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationAlias"
+            text/plain; charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationAlias"
+    post:
+      tags:
+        - integration
+      summary: Create a new alias for an integration
+      responses:
+        "200":
+          description: Integration Alias Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IntegrationAlias"
+            text/plain; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/IntegrationAlias"
+  "/project/{project_id}/integrations/{integration_id}/aliases/{alias_id}":
+    parameters:
+      - $ref: "#/components/parameters/project_id"
+      - $ref: "#/components/parameters/integration_id"
+      - $ref: "#/components/parameters/alias_id"
+    delete:
+      tags:
+        - integration
+      summary: Remove integration alias
+      responses:
+        "204":
+          description: integration alias removed
   "/project/{project_id}/keys":
     parameters:
       - $ref: "#/components/parameters/project_id"
@@ -1249,6 +1345,15 @@ paths:
       tags:
         - template
       summary: Stop all active tasks of template
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                force:
+                  type: boolean
+                  description: Force stop (kill) all tasks immediately
       responses:
         "204":
           description: tasks stopped
@@ -1503,6 +1608,15 @@ paths:
       tags:
         - task
       summary: Stop a job
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                force:
+                  type: boolean
+                  description: Force stop (kill) the task immediately
       responses:
         "204":
           description: Task queued
@@ -1703,6 +1817,14 @@ components:
       in: path
       required: true
       example: 13
+      schema:
+        type: integer
+    alias_id:
+      name: alias_id
+      description: Integration Alias ID
+      in: path
+      required: true
+      example: 15
       schema:
         type: integer
     invite_id:
@@ -2166,6 +2288,8 @@ components:
         user_id:
           type: integer
           minimum: 1
+        name:
+          type: string
     ProjectRequest:
       type: object
       properties:
@@ -2555,6 +2679,13 @@ components:
         value:
           type: string
           example: value
+    IntegrationAlias:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
     RepositoryRequest:
       type: object
       properties:
@@ -2662,8 +2793,6 @@ components:
           type: string
         message:
           type: string
-        inventory_id:
-          type: integer
         arguments:
           type: string
         params:
@@ -2699,6 +2828,10 @@ components:
         environment_id:
           type: integer
           minimum: 1
+        environment_ids:
+          type: array
+          items:
+            type: integer
         view_id:
           type: integer
           minimum: 1
@@ -2765,6 +2898,10 @@ components:
         environment_id:
           type: integer
           minimum: 1
+        environment_ids:
+          type: array
+          items:
+            type: integer
         view_id:
           type: integer
           minimum: 1

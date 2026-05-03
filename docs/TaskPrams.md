@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **environment** | **str** |  | [optional] 
 **git_branch** | **str** |  | [optional] 
 **message** | **str** |  | [optional] 
-**inventory_id** | **int** |  | [optional] 
 **arguments** | **str** |  | [optional] 
 **params** | [**TaskParams**](TaskParams.md) |  | [optional] 
 

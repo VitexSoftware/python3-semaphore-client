@@ -1,0 +1,3 @@
+Test-Command: python3 -c "import semaphore_client; print(semaphore_client.__version__)"
+Depends: python3-semaphore-client
+Restrictions: superficial

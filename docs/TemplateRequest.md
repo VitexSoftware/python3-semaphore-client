@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **inventory_id** | **int** |  | [optional] 
 **repository_id** | **int** |  | [optional] 
 **environment_id** | **int** |  | [optional] 
+**environment_ids** | **List[int]** |  | [optional] 
 **view_id** | **int** |  | [optional] 
 **vaults** | [**List[TemplateVault]**](TemplateVault.md) |  | [optional] 
 **name** | **str** |  | [optional] 
