@@ -20,7 +20,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "semaphore_client"
+NAME = "python-semaphore-client"
 VERSION = "2.16.14"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [

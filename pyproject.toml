@@ -1,5 +1,5 @@
 [project]
-name = "semaphore_client"
+name = "python-semaphore-client"
 version = "2.16.14"
 description = "Semaphore API"
 authors = [
